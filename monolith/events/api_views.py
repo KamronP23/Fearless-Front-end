@@ -162,7 +162,7 @@ def api_list_locations(request):
         )
     else:
         content = json.loads(request.body)
-
+        print("check me out", content)
         try:
             state = State.objects.get(abbreviation=content["state"])
             content["state"] = state
@@ -228,3 +228,19 @@ def api_show_location(request, pk):
             encoder=LocationDetailEncoder,
             safe=False,
         )
+
+
+@require_http_methods(["GET"])
+def api_list_states(request):
+    #Get the states from the database ordered by name
+    states = State.objects.order_by("name")
+    # Create an empty list name state_list
+    state_list = []
+    #for each state in the states from the database
+    for state in states:
+    #create a dictionary that contains the name and abbreviation for each state
+        state_d = {"name": state.name, "abbreviation":state.abbreviation}
+        #state_d[state.abbreviation] = state.name
+    #append the dictionary to the list
+        state_list.append(state_d)
+    return JsonResponse({"states": state_list})

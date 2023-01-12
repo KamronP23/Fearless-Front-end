@@ -1,9 +1,6 @@
 function createCard(name, description, pictureUrl, eventStart, eventEnd, locationName) {
     return `
-    <div class="grid text-center">
-    <div class="row align-items-start">
       <div class="shadow p-3 sm-5 bg-body-tertiary rounded">
-      <div class="col">
       <div class="p-8">
       <div class="card">
         <img src="${pictureUrl}" class="card-img-top">
@@ -12,8 +9,6 @@ function createCard(name, description, pictureUrl, eventStart, eventEnd, locatio
           <h6 class="card-subtitle mb-2 text-muted">${locationName}</h6>
           <p class="card-text">${description}</p>
         <div class="card-footer"><p class="card-text">${eventStart.toLocaleDateString('en-us', {year:"numeric", month:"numeric", day:"numeric"})} - ${eventEnd.toLocaleDateString('en-us', {year:"numeric", month:"numeric", day:"numeric"})}</p></div>
-      </div>
-      </div>
       </div>
       </div>
       </div>
@@ -58,7 +53,7 @@ function createCard(name, description, pictureUrl, eventStart, eventEnd, locatio
       }
     } catch (e) {
       console.error(e);
-      console.log('I dont think this is correct');
+      console.log('error');
       // Figure out what to do if an error is raised
     }
 
