@@ -9,7 +9,7 @@ from .models import Conference, Location, State
 
 class LocationListEncoder(ModelEncoder):
     model = Location
-    properties = ["name", "picture_url"]
+    properties = ["name", "picture_url", "id"]
 
 
 class LocationDetailEncoder(ModelEncoder):
@@ -156,6 +156,9 @@ def api_list_locations(request):
     """
     if request.method == "GET":
         locations = Location.objects.all()
+        location_list=[]
+        for location in locations:
+            location_d = {"name": location.name, "id":location.id}
         return JsonResponse(
             {"locations": locations},
             encoder=LocationListEncoder,

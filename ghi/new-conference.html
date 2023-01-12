@@ -49,9 +49,13 @@
                 <input placeholder="ends" required type="date" name="ends" id="ends" class="form-control">
                 <label for="ends">Ends</label>
               </div>
-              <div class="form-floating mb-3">
-                <input placeholder="description" required type="text" name="description" id="description" class="form-control" required maxlength="500">
+              <!-- <div class="form-floating mb-3">
+                <input placeholder="description" required type="text" name="description" id="description" class="form-control" required rows="4" required maxlength="500">
                 <label for="description">Description</label>
+              </div> -->
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" rows="3"></textarea>
               </div>
               <div class="form-floating mb-3">
                 <input placeholder="max_presentations" required type="number" name="max_presentations" id="max_presentations" class="form-control">
@@ -62,7 +66,7 @@
                 <label for="max_attendees">Maximum attendees</label>
               </div>
               <div class="mb-3">
-                <select required name="location.name" id="location.name" class="form-select">
+                <select required name="location" id="location" class="form-select">
                   <option selected value="">Choose a location</option>
                 </select>
               </div>
