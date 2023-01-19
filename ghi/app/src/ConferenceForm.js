@@ -26,15 +26,17 @@ function ConferenceForm () {
         data.max_attendees = maxAttendees;
         data.location = location
 
-        const conferenceURL = 'http://localhost:8000/api/conferences/'
+        const url = 'http://localhost:8000/api/conferences/';
         const fetchConfig = {
-            method: "POST",
+            method: "post",
             body: JSON.stringify(data),
             headers: {
-                'Content-Type': 'application/json',
+              'Content-Type': 'application/json',
             },
-        };
-        const response = await fetch(conferenceURL, fetchConfig);
+          };
+
+        const response = await fetch(url, fetchConfig);
+
         if (response.ok) {
             const newConference = await response.json();
             console.log(newConference);
@@ -102,6 +104,7 @@ function ConferenceForm () {
 
 
     return (
+        <div className="my-5 container">
         <div className="row">
             <div className="offset-3 col-6">
             <div className="shadow p-4 mt-4">
@@ -132,14 +135,12 @@ function ConferenceForm () {
                     <label htmlFor="max_attendees">Maximum attendees</label>
                 </div>
                 <div className="mb-3">
-                    <select onChange={handleLocationChange} required name="location" id="location" className="form-select" value={location}>
-                        <option selected value="">Choose a location</option>
+                    <select onChange={handleLocationChange} required name="location" id="location" className="form-select">
+                        <option value="">Choose a location</option>
                         {locations.map(location => {
-                            return (
-                                <option key={location.id} value={location.id}>
-                                    {location.name}
-                                </option>
-                            );
+                        return (
+                            <option key={location.id} value={location.id}>{location.name}</option>
+                        )
                         })}
                     </select>
                 </div>
@@ -148,7 +149,8 @@ function ConferenceForm () {
             </div>
             </div>
         </div>
+        </div>
     );
 }
 
-export default ConferenceForm
+export default ConferenceForm;

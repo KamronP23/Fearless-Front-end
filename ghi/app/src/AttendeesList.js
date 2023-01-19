@@ -25,5 +25,4 @@ function AttendeesList(props) {
     );
   }
 
-
-export default AttendeesList;
+  export default AttendeesList;
